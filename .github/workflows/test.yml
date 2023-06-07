@@ -1,0 +1,22 @@
+name: Unit tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Verify code
+        uses: actions/checkout@v2
+
+      - name: Node.js config
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install depencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test

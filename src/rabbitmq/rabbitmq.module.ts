@@ -5,10 +5,4 @@ import { RabbitMQService } from './rabbitmq.service';
   providers: [RabbitMQService],
   exports: [RabbitMQService],
 })
-export class RabbitmqModule {
-  constructor(private readonly rabbitMQService: RabbitMQService) {}
-
-  async onApplicationShutdown() {
-    await this.rabbitMQService.closeConnection();
-  }
-}
+export class RabbitmqModule {}
