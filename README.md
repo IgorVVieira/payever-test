@@ -43,7 +43,7 @@ I left a file with the collection in the postman to facilitate the tests, availa
 To run the unit tests for this project, you can use the following command:
 
 ```bash
-yarn test
+docker-compose run nestjs yarn test
 ````
 
 ### Running End-to-End (E2E) Tests
@@ -51,7 +51,7 @@ yarn test
 To run the end-to-end tests for this project, you can use the following command:
 
 ```bash
-yarn test:e2e
+docker-compose run nestjs yarn test 
 ```
 
 ### Evidences
