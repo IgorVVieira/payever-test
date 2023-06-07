@@ -8,10 +8,6 @@ import { RabbitMQService } from './rabbitmq.service';
 export class RabbitmqModule {
   constructor(private readonly rabbitMQService: RabbitMQService) {}
 
-  async onModuleInit() {
-    await this.rabbitMQService.initialize();
-  }
-
   async onApplicationShutdown() {
     await this.rabbitMQService.closeConnection();
   }

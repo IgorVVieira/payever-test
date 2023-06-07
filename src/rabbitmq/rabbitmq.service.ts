@@ -22,6 +22,7 @@ export class RabbitMQService {
     data: any,
   ): Promise<void> {
     try {
+      if (!this.channel) await this.initialize();
       await this.channel.assertExchange(exchange, 'direct', { durable: true });
       this.channel.publish(
         exchange,
