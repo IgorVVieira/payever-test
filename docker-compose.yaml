@@ -1,0 +1,45 @@
+version: '3.2'
+
+services:
+  app:
+    build: .
+    container_name: nestjs
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+      - rabbitmq
+    environment:
+      MONGO_URI: mongodb://mongodb/nest
+      RABBITMQ_URI: amqp://rabbitmq
+    volumes:
+      - ./images:/app/images
+    links:
+      - mongodb
+      - rabbitmq
+    networks:
+      - payever
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - '27017:27017'
+    networks:
+      - payever
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.8-management-alpine
+    ports:
+      - 5673:5672
+      - 15673:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - payever
+
+networks:
+  payever:
+    driver: bridge
