@@ -48,6 +48,7 @@ yarn test
 
 ### Running End-to-End (E2E) Tests
 
+Observations: Unfortunately I had a problem running the e2e tests, the first time we had some errors, but when running the second time all the tests passed. Unfortunately I couldn't fix it in time, but I'm working on it. Sorry. <br/>
 To run the end-to-end tests for this project, you can use the following command: <br/>
 If you don't have the backend bash open, first run:
 ```bash
