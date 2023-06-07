@@ -28,7 +28,7 @@ To get started, follow these steps:
 
 3. Build and run the project using Docker Compose:
    ```bash
-     docker-compose up
+     docker-compose up -d
    ```
 4. The project will now be running on your local machine.
 
