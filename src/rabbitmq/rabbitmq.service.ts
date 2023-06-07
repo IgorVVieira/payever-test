@@ -8,7 +8,6 @@ export class RabbitMQService {
   private channel: Channel;
 
   async initialize(): Promise<void> {
-    console.log(process.env.RABBITMQ_URI);
     try {
       this.connection = await connect(process.env.RABBITMQ_URI);
       this.channel = await this.connection.createChannel();

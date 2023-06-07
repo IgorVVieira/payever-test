@@ -8,19 +8,18 @@ services:
       - '3000:3000'
     depends_on:
       - mongodb
-      - rabbitmq
+      - amqp
     environment:
       MONGO_URI: mongodb://mongodb/nest
-      RABBITMQ_URI: amqp://rabbitmq
+      RABBITMQ_URI: amqp://guest:guest@amqp:5672
     volumes:
       - ./images:/app/images
-    links:
-      - mongodb
-      - rabbitmq
+    links: [ mongodb, amqp ]
     networks:
       - payever
 
   mongodb:
+    restart: always
     container_name: mongodb
     image: mongo
     ports:
@@ -28,12 +27,16 @@ services:
     networks:
       - payever
 
-  rabbitmq:
-    container_name: rabbitmq
+  amqp:
+    restart: always
+    container_name: amqp
     image: rabbitmq:3.8-management-alpine
     ports:
       - 5673:5672
       - 15673:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq

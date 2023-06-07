@@ -8,11 +8,14 @@ export class EmailService {
   async sendEmail(to: string, subject: string, content: string): Promise<void> {
     const accounnt = await nodemailer.createTestAccount();
     this.transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
       secure: false,
       auth: {
         user: accounnt.user,
         pass: accounnt.pass,
       },
+      ignoreTLS: true,
     });
     await this.transporter.sendMail({
       from: 'test@gmail.com',

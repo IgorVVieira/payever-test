@@ -8,7 +8,7 @@ import { RabbitMQService } from './rabbitmq.service';
 export class RabbitmqModule {
   constructor(private readonly rabbitMQService: RabbitMQService) {}
 
-  async onApplicationBootstrap() {
+  async onModuleInit() {
     await this.rabbitMQService.initialize();
   }
 

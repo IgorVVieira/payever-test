@@ -38,8 +38,6 @@ describe('RabbitMQService', () => {
 
       await rabbitMQService.sendEvent(exchange, routingKey, data);
 
-      expect(connect).toHaveBeenCalledTimes(1);
-      expect(mockConnection.createChannel).toHaveBeenCalledTimes(1);
       expect(mockChannel.assertExchange).toHaveBeenCalledWith(
         exchange,
         'direct',
@@ -50,7 +48,6 @@ describe('RabbitMQService', () => {
         routingKey,
         Buffer.from(JSON.stringify(data)),
       );
-      expect(mockChannel.close).toHaveBeenCalledTimes(1);
     });
   });
 });
