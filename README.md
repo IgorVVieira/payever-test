@@ -37,29 +37,37 @@ To get started, follow these steps:
 I left a file with the collection in the postman to facilitate the tests, available at:
 [Collection](/postman/Users.postman_collection.json)
 
-
 ### Running Unit Tests
 
 To run the unit tests for this project, you can use the following command:
 
 ```bash
-docker-compose run nestjs yarn test
-````
+docker exec -it nestjs bash
+yarn test
+```
 
 ### Running End-to-End (E2E) Tests
 
-To run the end-to-end tests for this project, you can use the following command:
-
+To run the end-to-end tests for this project, you can use the following command: <br/>
+If you don't have the backend bash open, first run:
 ```bash
-docker-compose run nestjs yarn test 
+docker exec -it nestjs bash
+```
+After:
+```bash
+yarn test:e2e
 ```
 
 ### Evidences
+
 Observation: I had problems creating a mock fs to test avatar.service, I couldn't solve it for a while. I apologize for that.
 
 #### Unit
+
 ![Unit](./results/unit.png)
+
 #### E2E
+
 ![E@E](./results/e2e.png)
 
 ### Requirements
